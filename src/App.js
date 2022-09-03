@@ -3,22 +3,24 @@ import "./style.css";
 
 function App() {
   const [count, setCount] = useState(0);
-  function CounterIncrease() {
+  function counterIncrease() {
     return setCount(count + 1);
   }
-  function CounterDecrease() {
+  function counterDecrease() {
     return setCount(count - 1);
   }
-  function CounterReset() {
+  function counterReset() {
     return setCount(0);
   }
-  function topLimit() {
-    if(count === 10){return true}
-    else {return false};
-  }
-  function bottomLimit() {
-    if(count === 0){return true}
-    else {return false};
+  function countLimit() {
+    if (count === 10 && EventTarget.className.require("btn btn-inc")) {
+      return true;
+    }
+    if (count === 0) {
+      return true;
+    } else {
+      return false;
+    }
   }
   return (
     <div id="container">
@@ -26,19 +28,19 @@ function App() {
       <h2 className="center-text">{count}</h2>
       <button
         className="btn btn-inc"
-        onClick={CounterIncrease}
-        disabled={topLimit()}
+        onClick={() => counterIncrease}
+        disabled={countLimit()}
       >
         Increase
       </button>
       <button
         className="btn btn-dec"
-        onClick={CounterDecrease}
-        disabled={bottomLimit()}
+        onClick={counterDecrease}
+        disabled={countLimit()}
       >
         Decrease
       </button>
-      <button className="btn btn-reset" onClick={CounterReset}>
+      <button className="btn btn-reset" onClick={counterReset}>
         Reset
       </button>
     </div>
