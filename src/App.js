@@ -12,6 +12,14 @@ function App() {
   function CounterReset() {
     return setCount(0);
   }
+  function topLimit() {
+    if(count === 10){return true}
+    else {return false};
+  }
+  function bottomLimit() {
+    if(count === 0){return true}
+    else {return false};
+  }
   return (
     <div id="container">
       <h1 className="center-text">COUNTER</h1>
@@ -19,14 +27,14 @@ function App() {
       <button
         className="btn btn-inc"
         onClick={CounterIncrease}
-        disabled={count === 10}
+        disabled={topLimit()}
       >
         Increase
       </button>
       <button
         className="btn btn-dec"
         onClick={CounterDecrease}
-        disabled={count === 0}
+        disabled={bottomLimit()}
       >
         Decrease
       </button>
