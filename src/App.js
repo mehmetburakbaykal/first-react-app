@@ -3,8 +3,15 @@ import "./style.css";
 
 function App() {
   const [count, setCount] = useState(0);
-  function counterIncrease() {
+  // const [increaseDis, setIncreaseDis] = useState(false);
+  function counterIncrease(e) {
+    // console.log(e);
+    if (e.target.className === "btn btn-inc" && count === 9) {
+      console.log("hello");
+      
+    }
     return setCount(count + 1);
+    
   }
   function counterDecrease() {
     return setCount(count - 1);
@@ -12,31 +19,33 @@ function App() {
   function counterReset() {
     return setCount(0);
   }
-  function countLimit() {
-    if (count === 10 && EventTarget.className.require("btn btn-inc")) {
-      return true;
-    }
-    if (count === 0) {
-      return true;
-    } else {
-      return false;
-    }
-  }
+  // function countLimit() {
+    // if (count === 10) {
+    //   return true;
+    // }
+    // if (count === 0) {
+    //   return true;
+    // } else {
+    //   return false;
+    // }
+  // }
   return (
     <div id="container">
       <h1 className="center-text">COUNTER</h1>
       <h2 className="center-text">{count}</h2>
       <button
+        value={"increaseBtn"}
         className="btn btn-inc"
-        onClick={() => counterIncrease}
-        disabled={countLimit()}
+        onClick={counterIncrease}
+        // disabled={countLimit()}
       >
         Increase
       </button>
       <button
+        value={"decreaseBtn"}
         className="btn btn-dec"
         onClick={counterDecrease}
-        disabled={countLimit()}
+        // disabled={countLimit()}
       >
         Decrease
       </button>
