@@ -4,19 +4,18 @@ import "./style.css";
 function App() {
   const [count, setCount] = useState(0);
   function counterIncrease() {
-    return setCount(count + 1);
+    setCount(count + 1);
   }
   function counterDecrease() {
-    return setCount(count - 1);
+    setCount(count - 1);
   }
   function counterReset() {
-    return setCount(0);
+    setCount(0);
   }
-  function countLimit() {
-    if (count === 10 && EventTarget.className.require("btn btn-inc")) {
+  function countLimit(isIncrease) {
+    if (isIncrease && count === 10) {
       return true;
-    }
-    if (count === 0) {
+    } else if (!isIncrease && count === 0) {
       return true;
     } else {
       return false;
@@ -28,15 +27,15 @@ function App() {
       <h2 className="center-text">{count}</h2>
       <button
         className="btn btn-inc"
-        onClick={() => counterIncrease}
-        disabled={countLimit()}
+        onClick={() => counterIncrease()}
+        disabled={countLimit(true)}
       >
         Increase
       </button>
       <button
         className="btn btn-dec"
         onClick={counterDecrease}
-        disabled={countLimit()}
+        disabled={countLimit(false)}
       >
         Decrease
       </button>
