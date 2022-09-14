@@ -26,6 +26,7 @@ function App() {
       <h1 className="center-text">COUNTER</h1>
       <h2 className="center-text">{count}</h2>
       <button
+        value={"increaseBtn"}
         className="btn btn-inc"
         onClick={() => counterIncrease()}
         disabled={countLimit(true)}
@@ -33,6 +34,7 @@ function App() {
         Increase
       </button>
       <button
+        value={"decreaseBtn"}
         className="btn btn-dec"
         onClick={counterDecrease}
         disabled={countLimit(false)}
