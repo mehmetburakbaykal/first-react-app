@@ -1,17 +1,12 @@
 import React, { useState } from "react";
+import { DecreaseButton } from "./components/DecreaseButton";
+import { Header } from "./components/Header";
+import { IncreaseButton } from "./components/IncreaseButton";
+import { ResetButton } from "./components/ResetButton";
 import "./style.css";
 
 function App() {
   const [count, setCount] = useState(0);
-  function counterIncrease() {
-    setCount(count + 1);
-  }
-  function counterDecrease() {
-    setCount(count - 1);
-  }
-  function counterReset() {
-    setCount(0);
-  }
   function countLimit(isIncrease) {
     if (isIncrease && count === 10) {
       return true;
@@ -23,27 +18,18 @@ function App() {
   }
   return (
     <div id="container">
-      <h1 className="center-text">COUNTER</h1>
-      <h2 className="center-text">{count}</h2>
-      <button
-        value={"increaseBtn"}
-        className="btn btn-inc"
-        onClick={() => counterIncrease()}
-        disabled={countLimit(true)}
-      >
-        Increase
-      </button>
-      <button
-        value={"decreaseBtn"}
-        className="btn btn-dec"
-        onClick={counterDecrease}
-        disabled={countLimit(false)}
-      >
-        Decrease
-      </button>
-      <button className="btn btn-reset" onClick={counterReset}>
-        Reset
-      </button>
+      <Header count={count} />
+      <IncreaseButton
+        count={count}
+        setCount={setCount}
+        countLimit={countLimit}
+      />
+      <DecreaseButton
+        count={count}
+        setCount={setCount}
+        countLimit={countLimit}
+      />
+      <ResetButton count={count} setCount={setCount}/>
     </div>
   );
 }
